@@ -53,5 +53,7 @@ public class Practice {
 		System.out.println((int)ch); // 65
 		System.out.println(iNum1+ch); // 75 (자동 형변환)
 		System.out.println((char)(iNum1+ch)); // K (강제 형변환)
+		
+		// 집 주석
 	}
 }
