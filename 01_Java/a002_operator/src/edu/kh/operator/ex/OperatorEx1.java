@@ -1,4 +1,4 @@
-package edu.kh.operator;
+package edu.kh.operator.ex;
 
 import java.util.Scanner; // Scanner import 코드
 
