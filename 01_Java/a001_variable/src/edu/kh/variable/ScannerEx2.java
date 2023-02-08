@@ -21,7 +21,7 @@ public class ScannerEx2 {
 		System.out.print("키: ");
 		double inputHeight = sc.nextDouble();
 		
-		System.out.printf("%s님은 %d세, 키 %.1fcm입니다",
+		System.out.printf("%s님은 %d세, 키 %f.1cm입니다",
 				inputName, inputAge, inputHeight);
 	}
 }
