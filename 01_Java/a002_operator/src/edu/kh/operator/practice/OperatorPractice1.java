@@ -17,7 +17,7 @@ public class OperatorPractice1 {
 		int percandy = candy / person;
 		int remaincandy = candy % person;
 		
-		System.out.println("1인당 사탕 개수: " + percandy);
+		System.out.println("\n1인당 사탕 개수: " + percandy);
 		System.out.println("남는 사탕 개수: " + remaincandy);
 	}
 }

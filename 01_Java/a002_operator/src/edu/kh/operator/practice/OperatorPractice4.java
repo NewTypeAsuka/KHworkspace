@@ -20,7 +20,7 @@ public class OperatorPractice4 {
 		int resultSum = inputKorScore + inputEngScore + inputMathScore;
 		System.out.println("합계: " + resultSum);
 		
-		double resultAvg = (inputKorScore + inputEngScore + inputMathScore) / 3;
+		double resultAvg = (double)(resultSum / 3);
 		System.out.println("평균: " + resultAvg);
 		
 		String resultFinal =
