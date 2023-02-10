@@ -22,5 +22,6 @@ public class ForRun {
 //		fx.ex12();
 //		fx.ex13();
 //		fx.ex14();
+		fx.ex15();
 	}
 }

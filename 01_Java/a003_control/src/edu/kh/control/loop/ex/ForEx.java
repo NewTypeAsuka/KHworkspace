@@ -221,5 +221,25 @@ public class ForEx {
 	// for문 응용 사용법 8
 	public void ex14() {
 		
+		// 입력받은 단 출력하기
+		// 단 입력받은 단이 2~9 사이가 아니라면 "잘못 입력하셨습니다" 출력
+		Scanner sc = new Scanner(System.in);
+		System.out.print("몇 단을 외우시겠습니까?: ");
+		int level = sc.nextInt();
+		
+		if (level <= 1 || level >= 10) {
+			System.out.println("잘못 입력하셨습니다");
+		} else {
+			for (int i = 1; i <= 9; i++) {
+				System.out.printf("%d x %d = %2d \n",
+						level, i, (level*i));
+				}
+		}
+	}
+	
+	// for문 응용 사용법 9
+	public void ex15() {
+		
+		// 이중 for문
 	}
 }
