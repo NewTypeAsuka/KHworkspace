@@ -1,4 +1,4 @@
-package edu.kr.control.condition.practice;
+package edu.kh.control.condition.practice;
 
 import java.util.Scanner;
 
@@ -34,7 +34,7 @@ public class ConditionPractice {
 		int eng = sc.nextInt();
 		
 		int sum = kor + math + eng;
-		dou avg = sum / 3;
+		double avg = sum / 3;
 		String result;
 		
 		if ((kor >= 40 && eng >= 40 && math >= 40) && avg >= 60) {
@@ -130,6 +130,5 @@ public class ConditionPractice {
 				"\n총점: " + finalScore +
 				result
 				);
-		
 	}
 }
