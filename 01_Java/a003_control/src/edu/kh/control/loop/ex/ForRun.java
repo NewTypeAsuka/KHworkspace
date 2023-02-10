@@ -22,6 +22,17 @@ public class ForRun {
 //		fx.ex12();
 //		fx.ex13();
 //		fx.ex14();
-		fx.ex15();
+		
+		// 중첩 반복문
+//		fx.ex15();
+//		fx.ex16();
+//		fx.ex17();
+//		fx.ex18();
+//		fx.ex19();
+//		fx.ex20();
+		
+		// 카운트
+//		fx.ex21();
+//		fx.ex22();
 	}
 }
