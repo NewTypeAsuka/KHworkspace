@@ -11,14 +11,14 @@ public class ArrayPracticeRun {
 		System.out.print("실행할 예제의 번호를 입력: ");
 		int number = sc.nextInt();
 		
-		switch (number) {
+		switch(number) {
 		case 1: ap.practice1(); break;//완성
 		case 2: ap.practice2(); break;//완성
 		case 3: ap.practice3(); break;//완성
 		case 4: ap.practice4(); break;//
-		case 5: ap.practice5(); break;//
+		case 5: ap.practice5(); break;//완성
 		case 6: ap.practice6(); break;//완성
-		case 7: ap.practice7(); break;//
+		case 7: ap.practice7(); break;//완성
 		case 8: ap.practice8(); break;//
 		case 9: ap.practice9(); break;//완성
 		case 10: ap.practice10(); break;//

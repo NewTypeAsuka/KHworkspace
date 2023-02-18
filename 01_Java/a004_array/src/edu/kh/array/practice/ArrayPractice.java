@@ -54,29 +54,55 @@ public class ArrayPractice {
 	public void practice4() { // 미완성
 		int[] arr;
 		arr = new int[5];
+		boolean result = false;
 		
-		System.out.print("입력 0: ");
-		int num1 = sc.nextInt();
-		System.out.print("입력 1: ");
-		int num2 = sc.nextInt();
-		System.out.print("입력 2: ");
-		int num3 = sc.nextInt();
-		System.out.print("입력 3: ");
-		int num4 = sc.nextInt();
-		System.out.print("입력 4: ");
-		int num5 = sc.nextInt();
+		for(int i=0; i<5; i++) {
+			System.out.printf("입력 %d: ", i);
+			int input = sc.nextInt();
+			arr[i] = input;
+		}
 		
-		arr[0] = num1;
-		arr[1] = num2;
-		arr[2] = num3;
-		arr[3] = num4;
-		arr[4] = num4;
+		System.out.print("검색할 값: ");
+		int target = sc.nextInt();
+		for(int i=0; i<5; i++) {
+			if(target == arr[i]) {
+				System.out.println("인덱스 값: " + i);
+				result = true;
+				break;
+			}else if(target != arr[i]) {
+				result = false;
+				continue;
+			}
+		}
+//		switch(result) {
+//		case true: break;
+//		case false: break;
+//		}
 	}
 	
-	public void practice5() { // 미완성
+	public void practice5() {
 		System.out.print("문자열: ");
-		String input = sc.next();
-		System.out.println(input);
+		String inputStr = sc.next();
+		char[] arr = inputStr.toCharArray();
+		int sum = 0;
+		
+		System.out.print("문자: ");
+		String inputChar = sc.next();
+		char ch = inputChar.charAt(0);
+		
+		for (int i = 0; i < arr.length; i++) {
+		    System.out.print(arr[i]);
+		}
+		System.out.printf("에 %s가 존재하는 위치(인덱스): ", ch);
+		
+		for(int i=0; i<arr.length; i++) {
+			if(ch == arr[i]) {
+				System.out.print(i + " ");
+				sum += 1;
+			}
+		}
+		System.out.println();
+		System.out.printf("%s 개수: %d", ch, sum);
 	}
 	
 	public void practice6() {
@@ -100,12 +126,23 @@ public class ArrayPractice {
 		System.out.println("총 합: " + sum);
 	}
 	
-	public void practice7() { // 미완성
-		char[] arr;
-		arr = new char[14];
+	public void practice7() {
+		char[] arr = new char[14];
 		
 		System.out.print("주민등록번호(-포함): ");
-		String input = sc.next();
+		String str = sc.next();
+		
+		for(int i=0; i<arr.length; i++) {
+			if(i>=8) {
+				arr[i] = '*';
+			}else {
+				arr[i] = str.charAt(i);
+			}
+		}
+		for(int i=0; i<arr.length; i++) {
+			System.out.print(arr[i]);
+		}
+		
 	}
 	
 	public void practice8() { // 미완성
