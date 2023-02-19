@@ -145,8 +145,32 @@ public class ArrayPractice {
 		
 	}
 	
-	public void practice8() { // 미완성
-		
+	public void practice8() {
+		System.out.print("정수: ");
+		int num = sc.nextInt();
+		for(boolean check=false; check=true;) {
+			if(num%2==0 || num<3) {
+				System.out.println("다시 입력하세요");
+				check=false;
+				System.out.print("정수: ");
+				num = sc.nextInt();
+			}else if(num%2==1 || num>=3) {
+				check=true;
+				break;
+			}
+		}
+		int[] arr = new int[num];
+		for(int i=0; i<((arr.length/2)+1); i++) {
+			arr[i] = i+1;
+			System.out.print(arr[i] + " ");
+		}
+		for(int i=((arr.length/2)+2); arr[i] != 1; i--) {
+			arr[i] = i-2;
+			System.out.print(arr[i] + " ");
+			if(arr[i] == 1) {
+				break;
+			}
+		}
 	}
 	
 	public void practice9() {
@@ -163,17 +187,17 @@ public class ArrayPractice {
 		}
 	}
 	
-	public void practice10() { // 미완성
-		int[] arr;
-		arr = new int[10];
-		int max = arr[0];
-		int min = arr[0];
+	public void practice10() {
+		int[] arr = new int[10];
 		
 		for(int i=0; i<arr.length; i++) {
 			int random = (int)((Math.random()*10) + 1);
 			arr[i] = random;
 		}
 		System.out.print("발생한 난수: ");
+		int max = arr[0];
+		int min = arr[0];
+		
 		for(int i=0; i<arr.length; i++) {
 			System.out.print(arr[i] + " ");
 			if(arr[i] > max) {
@@ -183,17 +207,39 @@ public class ArrayPractice {
 				min = arr[i];
 			}
 		}
+		System.out.println();
 		System.out.println("최대값: " + max);
 		System.out.println("최소값: " + min);
 	}
 	
 	public void practice11() { // 미완성
-		int[] arr;
-		arr = new int[10];
+		int[] arr = new int[10];
+		arr[0] = 0;
+		
+		for(int i=0; i<arr.length; i++) {
+			int random = (int)((Math.random()*10) + 1);
+			for(int check=0; check<arr.length; check++) {
+				if(arr[i] == random) {
+					continue;
+				}else if(arr[i] != random) {
+					arr[i] = random;
+				}
+			}
+			System.out.print(arr[i] + " ");
+		}
 	}
 	
-	public void practice12() {
+	public void practice12() { // 미완성
+		System.out.print("문자열: ");
+		String str = sc.next();
+		char[] arrTemp = new char[str.length()];
+		char[] arr;
 		
+		for(int i=0; i<str.length(); i++) {
+			char ch = str.charAt(i);
+			arrTemp[i] = ch;
+			System.out.print(arrTemp[i] + " ");
+		}
 	}
 	
 	public void practice13() {
@@ -315,8 +361,42 @@ public class ArrayPractice {
 		}
 	}
 	
-	public void practice21() {
+	public void practice21() { //미완성
+		String[] students = {"강건강", "남나나", "도대담",
+							 "류라라", "문미미", "박보배",
+							 "송성실", "윤예의", "진재주",
+							 "차천축", "피풍표", "홍하하"};
+		String arr1[][] = new String[3][2];
+		String arr2[][] = new String[3][2];
+		for(int i=0; i<students.length; i++) {
+			for(int row1=0; row1<arr1.length; row1++) {
+				for(int col1=0; col1<arr1[row1].length; col1++) {
+					arr1[row1][col1] = students[i];
+					if(arr1[2][1] != null) {
+						for(int row2=0; row2<arr2.length; row2++) {
+							for(int col2=0; col2<arr2[row2].length; col2++) {
+								arr2[row2][col2] = students[i];
+							}
+						}
+					}
+				}
+			}
+		}
 		
+		System.out.println("== 1분단 ==");
+		for(int i=0; i<arr1.length; i++) {
+			for(int j=0; j<arr1[i].length; j++) {
+				System.out.print(arr1[i][j] + " ");
+			}
+			System.out.println();
+		}
+		System.out.println("== 2분단 ==");
+		for(int i=0; i<arr2.length; i++) {
+			for(int j=0; j<arr2[i].length; j++) {
+				System.out.print(arr2[i][j] + " ");
+			}
+			System.out.println();
+		}
 	}
 	
 	public void practice22() {

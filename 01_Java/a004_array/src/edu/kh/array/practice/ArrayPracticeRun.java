@@ -19,11 +19,11 @@ public class ArrayPracticeRun {
 		case 5: ap.practice5(); break;//완성
 		case 6: ap.practice6(); break;//완성
 		case 7: ap.practice7(); break;//완성
-		case 8: ap.practice8(); break;//
+		case 8: ap.practice8(); break;//완성
 		case 9: ap.practice9(); break;//완성
-		case 10: ap.practice10(); break;//
+		case 10: ap.practice10(); break;//완성
 		case 11: ap.practice11(); break;//
-		case 12: ap.practice12(); break;
+		case 12: ap.practice12(); break;//
 		case 13: ap.practice13(); break;
 		case 14: ap.practice14(); break;
 		case 15: ap.practice15(); break;//완성
@@ -32,7 +32,7 @@ public class ArrayPracticeRun {
 		case 18: ap.practice18(); break;
 		case 19: ap.practice19(); break;//완성
 		case 20: ap.practice20(); break;//완성
-		case 21: ap.practice21(); break;
+		case 21: ap.practice21(); break;//
 		case 22: ap.practice22(); break;
 		case 23: ap.practice23(); break;
 		case 24: ap.practice24(); break;
