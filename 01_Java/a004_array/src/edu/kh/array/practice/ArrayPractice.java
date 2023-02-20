@@ -361,24 +361,25 @@ public class ArrayPractice {
 		}
 	}
 	
-	public void practice21() { //미완성
+	public void practice21() {
 		String[] students = {"강건강", "남나나", "도대담",
 							 "류라라", "문미미", "박보배",
 							 "송성실", "윤예의", "진재주",
 							 "차천축", "피풍표", "홍하하"};
-		String arr1[][] = new String[3][2];
-		String arr2[][] = new String[3][2];
+		String[][] arr1 = new String[3][2];
+		String[][] arr2 = new String[3][2];
+		
 		for(int i=0; i<students.length; i++) {
-			for(int row1=0; row1<arr1.length; row1++) {
-				for(int col1=0; col1<arr1[row1].length; col1++) {
-					arr1[row1][col1] = students[i];
-					if(arr1[2][1] != null) {
-						for(int row2=0; row2<arr2.length; row2++) {
-							for(int col2=0; col2<arr2[row2].length; col2++) {
-								arr2[row2][col2] = students[i];
-							}
-						}
-					}
+			for(int row=0; row<arr1.length; row++) {
+				for(int col=0; col<arr1[row].length; col++) {
+					arr1[row][col] = students[i];
+					i++;
+				}
+			}
+			for(int row=0; row<arr2.length; row++) {
+				for(int col=0; col<arr2[row].length; col++) {
+					arr2[row][col] = students[i];
+					i++;
 				}
 			}
 		}
@@ -400,7 +401,73 @@ public class ArrayPractice {
 	}
 	
 	public void practice22() {
+		String[] students = {"강건강", "남나나", "도대담",
+							 "류라라", "문미미", "박보배",
+							 "송성실", "윤예의", "진재주",
+							 "차천축", "피풍표", "홍하하"};
+		String[][] arr1 = new String[3][2];
+		String[][] arr2 = new String[3][2];
 		
+		for(int i=0; i<students.length; i++) {
+			for(int row=0; row<arr1.length; row++) {
+				for(int col=0; col<arr1[row].length; col++) {
+					arr1[row][col] = students[i];
+					i++;
+				}
+			}
+			for(int row=0; row<arr2.length; row++) {
+				for(int col=0; col<arr2[row].length; col++) {
+					arr2[row][col] = students[i];
+					i++;
+				}
+			}
+		}
+		
+		System.out.println("== 1분단 ==");
+		for(int i=0; i<arr1.length; i++) {
+			for(int j=0; j<arr1[i].length; j++) {
+				System.out.print(arr1[i][j] + " ");
+			}
+			System.out.println();
+		}
+		System.out.println("== 2분단 ==");
+		for(int i=0; i<arr2.length; i++) {
+			for(int j=0; j<arr2[i].length; j++) {
+				System.out.print(arr2[i][j] + " ");
+			}
+			System.out.println();
+		}
+		
+		System.out.print("검색할 학생 이름을 입력하세요: ");
+		String name = sc.next();
+		for(int i=0; i<arr1.length; i++) {
+			for(int j=0; j<arr1[i].length; j++) {
+				if(arr1[i][j].equals(name)) {
+					if(j%2==0) {
+						System.out.printf("검색하신 %s 학생은 1분단 %s번째 줄 왼쪽에 있습니다", name, i+1);
+					} else if(j%2!=0) {
+						System.out.printf("검색하신 %s 학생은 1분단 %s번째 줄 오른쪽에 있습니다", name, i+1);
+					}
+					break;
+				}else {
+					continue;
+				}
+			}
+		}
+		for(int i=0; i<arr2.length; i++) {
+			for(int j=0; j<arr2[i].length; j++) {
+				if(arr2[i][j].equals(name)) {
+					if(j%2==0) {
+						System.out.printf("검색하신 %s 학생은 2분단 %s번째 줄 왼쪽에 있습니다", name, i+1);
+					} else if(j%2!=0) {
+						System.out.printf("검색하신 %s 학생은 2분단 %s번째 줄 오른쪽에 있습니다", name, i+1);
+					}
+					break;
+				}else {
+					continue;
+				}
+			}
+		}
 	}
 	
 	public void practice23() {
