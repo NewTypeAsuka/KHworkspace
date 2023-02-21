@@ -12,7 +12,7 @@ public class ArrayPracticeRun {
 		int number = sc.nextInt();
 		
 		switch (number) {
-//		case 1: ap.practice1(); break;
+		case 1: ap.practice1(); break;
 //		case 2: ap.practice2(); break;
 //		case 3: ap.practice3(); break;
 //		case 4: ap.practice4(); break;
@@ -25,6 +25,17 @@ public class ArrayPracticeRun {
 //		case 11: ap.practice11(); break;
 //		case 12: ap.practice12(); break;
 //		case 13: ap.practice13(); break;
+//		case 13: ap.practice14(); break;
+//		case 13: ap.practice15(); break;
+//		case 13: ap.practice16(); break;
+//		case 13: ap.practice17(); break;
+//		case 13: ap.practice18(); break;
+//		case 13: ap.practice19(); break;
+//		case 13: ap.practice20(); break;
+//		case 13: ap.practice21(); break;
+//		case 13: ap.practice22(); break;
+//		case 13: ap.practice23(); break;
+//		case 13: ap.practice24(); break;
 		default: System.out.println("존재하지 않는 예제 번호입니다.");
 		}
 	}
