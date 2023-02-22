@@ -1,6 +1,7 @@
 package edu.kh.inheritance.dto;
 
-public class Parent {
+// final class: 상속이 불가능한 클래스
+public /* final */ class Parent {
 
 	private int money = 400_000_000;
 	private String lastName = "박";
@@ -16,7 +17,8 @@ public class Parent {
 		System.out.println("Parent(int, String) 매개변수 생성자");
 	}
 	// getter/setter
-	public int getMoney() {
+	// final method: 오버라이딩이 불가능한 메서드
+	public /* final */ int getMoney() {
 		return money;
 	}
 	public void setMoney(int money) {

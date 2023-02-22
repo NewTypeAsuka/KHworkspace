@@ -24,4 +24,11 @@ public class Child2 extends Parent { // Parent 상속
 	public String toString() {
 		return house;
 	}
+	// 오버라이딩: getMoney() 재정의
+	// @Override: 컴파일러에게 해당 메서드는 재정의되었다는 컴퓨터용 주석 -> 오버라이딩 형식 맞는지 검사 진행
+	@Override
+	public int getMoney() {
+		System.out.println("자식이 오버라이딩한 getMoney()");
+		return super.getMoney() + 500;
+	}
 }
