@@ -39,7 +39,7 @@ public class GameView {
 	public static void displayMenu() {
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃====================================┃");
-		System.out.println("┃     Survive in Zombie Building     ┃");
+		System.out.println("┃      Cheong-gye Greits Escape      ┃");
 		System.out.println("┃====================================┃");
 		System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
 		System.out.println("┃  /     /       / /   /     /   /   ┃");
