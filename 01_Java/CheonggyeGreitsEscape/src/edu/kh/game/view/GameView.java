@@ -12,7 +12,7 @@ public class GameView {
 	 * - ●(내레이션)●
 	 * - [(게임 설명)]
 	 * - 대화는 처음에 두 칸 띄우고, 한 마디 뒤에는 enter();
-	 * - 한 루틴 진행 후에는 clearScreen(); 
+	 * - 한 루틴 진행 후에는 clearScreen();
 	 */
 	
 	// 화면 5행 개행
