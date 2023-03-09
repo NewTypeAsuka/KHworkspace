@@ -8,7 +8,7 @@ public class GameView {
 	
 	public static String name;
 
-	/* 노트
+	/* 인트로, 아웃트로 NOTATION
 	 * - ●(내레이션)●
 	 * - [(게임 설명)]
 	 * - 대화는 처음에 두 칸 띄우고, 한 마디 뒤에는 enter();
@@ -18,7 +18,7 @@ public class GameView {
 	// 화면 5행 개행
 	public static void clearScreen() {
 		for(int i=0; i<5; i++) System.out.println("");
-		}
+	}
 	
 	// 대화 출력 엔터
 	public static void enter() {
@@ -33,6 +33,7 @@ public class GameView {
 		System.out.println("[플레이어 이름을 지어주세요.]");
 		System.out.print("이름: ");
 		name = sc.next();
+		Player p1 = new Player(name);
 	}
 	
 	// 시작메뉴 화면
@@ -47,7 +48,7 @@ public class GameView {
 		System.out.println("┃2. 게임 종료	Exit  /     /  /  /  ┃");
 		System.out.println("┃    / /      /        /      /   /  ┃");
 		System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
-		System.out.println("┃                     dev_20230302   ┃");
+		System.out.println("┃                     dev_20230313   ┃");
 		System.out.println("┃                     JYH/PJW/JBS    ┃");
 		System.out.println("┃                     JSY/CGT/LSJ    ┃");
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
@@ -98,15 +99,14 @@ public class GameView {
 				
 					// 이스터에그
 					String easteregg = sc.next();
-					if(easteregg.toUpperCase().equals("EASTEREGG")) {
+					if(easteregg.toUpperCase().equals("HI")) {
 						System.out.println("?: ...");
 						try {
 							Thread.sleep(2500);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
-						System.out.println("이 게임은 정용화, 박종욱, 장반석,");
-						System.out.println("        정송이, 최근태, 이상준이 만들었습니다.");
+						System.out.println("백동현 강사님 바~보");
 					}
 				break;
 			}else if(!(startInput.equals("1") || startInput.equals("2"))) {
@@ -140,5 +140,68 @@ public class GameView {
 	// 게임 화면
 	public static void displayGame() {
 		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		System.out.println("(실제 게임이 진행되는 곳)");
+		displayOutro(); /* 게임 아웃트로 */
+	}
+	
+	// 게임 아웃트로
+	public static void displayOutro() {
+		System.out.println("  \"와~ 드디어 탈출이다!\""); enter();
+		System.out.println("  \"우리는 최후의 승자야.\""); enter();
+		System.out.println("  \"이제부터는 항상 주위 사람을 챙기면서 살아가자..\""); enter();
+		System.out.println("  \"힘을 내고, 힘을 내고, 힘을 내자!\""); enter();
+		System.out.println("  \"아자! 아자! 파이팅~\""); enter();
+		System.out.println("  \"우리 인생 파이팅~\""); enter();
+		System.out.println("  \"FOREVER..\""); enter();
+		System.out.println("●한바탕 좀비 소동에서 탈출한 이들은\n"
+				+ "  오래오래 잘 살았다고 한다.●"); enter(); clearScreen();
+		System.out.println("[게임 끝]"); enter(); clearScreen();
+		displayEnding(); /* 엔딩 */
+	}
+	
+	// 엔딩
+	public static void displayEnding() {
+		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+		System.out.println("┃====================================┃");
+		System.out.println("┃      Cheong-gye Greits Escape      ┃");
+		System.out.println("┃====================================┃");
+		System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+		System.out.println("┃  /     /       / /   /     /   /   ┃");
+		System.out.println("┃   /  /    THANKS TO PLAY! /  /    /┃");
+		System.out.println("┃    / /      /        /      /   /  ┃");
+		System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+		System.out.println("┃                     dev_20230313   ┃");
+		System.out.println("┃   제작:                            ┃");
+		System.out.println("┃    정용화                          ┃");
+		System.out.println("┃     박종욱                         ┃");
+		System.out.println("┃      장반석                        ┃");
+		System.out.println("┃       정송이                       ┃");
+		System.out.println("┃        최근태                      ┃");
+		System.out.println("┃         이상준                     ┃");
+		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 	}
 }

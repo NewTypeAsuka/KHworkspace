@@ -17,6 +17,10 @@ public class Player {
 	private String item5;
 	
 	public Player() {}
+	
+	public Player(String name) {
+		this.name = name;
+	}
 
 	public Player(String name, int hp, int defense, int power, int stamina, int floor, 
 			String item1, String item2, String item3, String item4, String item5) {
