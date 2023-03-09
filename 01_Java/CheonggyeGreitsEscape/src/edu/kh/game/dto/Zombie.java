@@ -8,9 +8,12 @@ public class Zombie {
 	private int hp;
 	private int power;
 	
-	public Zombie() {}
+	public Zombie() {
+		super();
+	}
 
 	public Zombie(String name, int hp, int power) {
+		super();
 		this.name = name;
 		this.hp = hp;
 		this.power = power;
