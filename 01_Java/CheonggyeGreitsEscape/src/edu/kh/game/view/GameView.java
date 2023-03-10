@@ -37,7 +37,6 @@ public class GameView {
 		System.out.println("[플레이어 이름을 지어주세요.]");
 		System.out.print("이름: ");
 		name = sc.next();
-		Player p1 = new Player(name);
 	}
 	
 	// 시작메뉴 화면

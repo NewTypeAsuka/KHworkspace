@@ -18,10 +18,7 @@ public class Player implements Serializable {
 	public Player() {
 		super();
 	}
-	
-	public Player(String name) { /* 플레이어 이름 짓기 */
-		this.name = name;
-	}
+
 
 	public Player(String name, int hp, int defense, int power,
 				  int stamina, int floor, boolean key) {

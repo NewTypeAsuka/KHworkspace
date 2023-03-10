@@ -31,6 +31,12 @@ public class Service {
 		}
 		return false;
 	}
+
+	
+	public String viewName() {
+		String name = p1.getName();
+		return name;
+	}
 	
 	public int viewHp() {// 현재 HP
 		int hp = p1.getHp();
