@@ -22,7 +22,7 @@ WHERE DEPT_CODE = 'D9';
 
 -- 3) 부서코드가 노옹철사원과 같은 소속의 직원 명단 조회   
 --> 위의 2개의 단계를 하나의 쿼리로!!! --> 1) 쿼리문을 서브쿼리로!!
-SELECT EMP_NAME
+SELECT EMP_ID, EMP_NAME, JOB_CODE, SALARY
 FROM EMPLOYEE
 WHERE DEPT_CODE = (SELECT DEPT_CODE
 				   FROM EMPLOYEE
@@ -345,29 +345,57 @@ WHERE DEPT_CODE IN (SELECT DEPT_ID
 -- 사원의 이름, 직급, 부서, 입사일을 조회        
 
 -- 1) 퇴사한 여직원 조회
-
+SELECT EMP_NAME, JOB_NAME, DEPT_TITLE, HIRE_DATE
+FROM EMPLOYEE
+NATURAL JOIN JOB
+JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID)
+WHERE ENT_YN = 'Y'
+AND SUBSTR(EMP_NO, 8, 1) = '2';
 
 -- 2) 퇴사한 여직원과 같은 부서, 같은 직급 (다중 열 서브쿼리)
-
+SELECT EMP_NAME, JOB_NAME, DEPT_TITLE, HIRE_DATE
+FROM EMPLOYEE
+NATURAL JOIN JOB
+JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID)
+WHERE (DEPT_TITLE, JOB_NAME) = (SELECT DEPT_TITLE, JOB_NAME
+								FROM EMPLOYEE
+								NATURAL JOIN JOB
+								JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID)
+								WHERE ENT_YN = 'Y'
+								AND SUBSTR(EMP_NO, 8, 1) = '2');
                                 
-
-
 -------------------------- 연습문제 -------------------------------
 -- 1. 노옹철 사원과 같은 부서, 같은 직급인 사원을 조회하시오. (단, 노옹철 사원은 제외)
 --    사번, 이름, 부서코드, 직급코드, 부서명, 직급명
-
+SELECT EMP_NO, EMP_NAME, DEPT_CODE, JOB_CODE, DEPT_TITLE, JOB_NAME
+FROM EMPLOYEE
+NATURAL JOIN JOB
+JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID)
+WHERE (DEPT_TITLE, JOB_NAME) = (SELECT DEPT_TITLE, JOB_NAME
+								FROM EMPLOYEE
+								NATURAL JOIN JOB
+								JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID)
+								WHERE EMP_NAME LIKE '노옹철')
+AND EMP_NAME NOT LIKE '노옹철';
 
 
 -- 2. 2000년도에 입사한 사원의 부서와 직급이 같은 사원을 조회하시오
 --    사번, 이름, 부서코드, 직급코드, 고용일
-
+SELECT EMP_NO, EMP_NAME, DEPT_CODE, JOB_CODE, HIRE_DATE
+FROM EMPLOYEE
+WHERE (DEPT_CODE, JOB_CODE) = (SELECT DEPT_CODE, JOB_CODE
+							   FROM EMPLOYEE
+							   WHERE EXTRACT(YEAR FROM HIRE_DATE) = 2000);
 
 
 -- 3. 77년생 여자 사원과 동일한 부서이면서 동일한 사수를 가지고 있는 사원을 조회하시오
 --    사번, 이름, 부서코드, 사수번호, 주민번호, 고용일     
-                  
-
-
+SELECT EMP_ID, EMP_NAME, DEPT_CODE, MANAGER_ID, EMP_NO, HIRE_DATE
+FROM EMPLOYEE
+WHERE (DEPT_CODE, MANAGER_ID) = (SELECT DEPT_CODE, MANAGER_ID
+							 	 FROM EMPLOYEE
+							 	 WHERE SUBSTR(EMP_NO, 1, 2) = 77
+							 	 AND SUBSTR(EMP_NO, 8, 1) IN (2, 4));
 
 ----------------------------------------------------------------------
 
@@ -379,13 +407,21 @@ WHERE DEPT_CODE IN (SELECT DEPT_ID
 -- 단, 급여와 급여 평균은 만원단위로 계산하세요 TRUNC(컬럼명, -4)    
 
 -- 1) 급여를 200, 600만 받는 직원 (200만, 600만이 평균급여라 생각 할 경우)
-
+SELECT EMP_ID, EMP_NAME, JOB_CODE, SALARY
+FROM EMPLOYEE
+WHERE SALARY IN (2000000, 6000000);
 
 -- 2) 직급별 평균 급여
-
+SELECT JOB_CODE, TRUNC(AVG(SALARY), -4)
+FROM EMPLOYEE
+GROUP BY JOB_CODE;
 
 -- 3) 본인 직급의 평균 급여를 받고 있는 직원
-
+SELECT EMP_ID, EMP_NAME, JOB_CODE, SALARY
+FROM EMPLOYEE
+WHERE (JOB_CODE, SALARY) IN (SELECT JOB_CODE, TRUNC(AVG(SALARY), -4)
+						   	 FROM EMPLOYEE
+							 GROUP BY JOB_CODE);
                   
                 
 
@@ -400,19 +436,50 @@ WHERE DEPT_CODE IN (SELECT DEPT_ID
 
 
 -- 사수가 있는 직원의 사번, 이름, 부서명, 사수사번 조회
-
+-- EXISTS: 서브쿼리에서 조회된 결과와 일치하는 행이 메인 쿼리에 하나라도 있으면 조회 결과에 포함
+--> 서브쿼리 조회 결과가 1행 이상이면 메인 쿼리 행을 결과에 포함
+SELECT EMP_ID, EMP_NAME, DEPT_TITLE, MANAGER_ID
+FROM EMPLOYEE MAIN
+LEFT JOIN DEPARTMENT ON (DEPT_ID = DEPT_CODE)
+WHERE EXISTS (SELECT EMP_ID
+			  FROM EMPLOYEE SUB
+			  WHERE SUB.EMP_ID = MAIN.MANAGER_ID);
 
 
 -- 직급별 급여 평균보다 급여를 많이 받는 직원의 
 -- 이름, 직급코드, 급여 조회
-
+SELECT EMP_NAME, JOB_CODE, SALARY
+FROM EMPLOYEE MAIN
+WHERE SALARY > (SELECT AVG(SALARY)
+			    FROM EMPLOYEE SUB
+			    WHERE SUB.JOB_CODE = MAIN.JOB_CODE);
 
 
 -- 부서별 입사일이 가장 빠른 사원의
 --    사번, 이름, 부서명(NULL이면 '소속없음'), 직급명, 입사일을 조회하고
 --    입사일이 빠른 순으로 조회하세요
 --    단, 퇴사한 직원은 제외하고 조회하세요
+			   
+-- 1) 간단하지만 신뢰도 낮은 결과
+SELECT EMP_ID, EMP_NAME, NVL(DEPT_TITLE, '소속없음'), JOB_NAME, HIRE_DATE
+FROM EMPLOYEE
+NATURAL JOIN JOB
+LEFT JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID)
+WHERE HIRE_DATE IN (SELECT MIN(HIRE_DATE)
+					FROM EMPLOYEE
+					WHERE ENT_YN = 'N'
+					GROUP BY DEPT_CODE) -- 다른 부서에서 같은 날짜 조회될 수 있음
+ORDER BY HIRE_DATE;
 
+-- 2) 어렵지만 신뢰도 높은 결과(상관 쿼리 이용)
+SELECT EMP_ID, EMP_NAME, NVL(DEPT_TITLE, '소속없음'), JOB_NAME, HIRE_DATE
+FROM EMPLOYEE MAIN
+LEFT JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID)
+JOIN JOB USING (JOB_CODE)
+WHERE HIRE_DATE = (SELECT MIN(HIRE_DATE) FROM EMPLOYEE SUB
+				   WHERE (ENT_YN = 'N' AND SUB.DEPT_CODE = MAIN.DEPT_CODE) -- NULL이 아닌 경우
+				   OR (ENT_YN = 'N' AND MAIN.DEPT_CODE IS NULL AND SUB.DEPT_CODE IS NULL)) -- NULL인 경우
+ORDER BY HIRE_DATE;
 
 
 ----------------------------------------------------------------------------------
@@ -422,13 +489,20 @@ WHERE DEPT_CODE IN (SELECT DEPT_ID
 --    SQL에서 단일 값을 가르켜 '스칼라'라고 함
 
 -- 각 직원들이 속한 직급의 급여 평균 조회
+SELECT EMP_NAME, JOB_CODE, SALARY,
+	(SELECT FLOOR(AVG(SALARY)) FROM EMPLOYEE SUB
+	 WHERE SUB.JOB_CODE = MAIN.JOB_CODE) 평균
+FROM EMPLOYEE MAIN;
 
 
 
 -- 모든 사원의 사번, 이름, 관리자사번, 관리자명을 조회
 -- 단 관리자가 없는 경우 '없음'으로 표시
 -- (스칼라 + 상관 쿼리)
-
+SELECT EMP_ID, EMP_NAME, MANAGER_ID,
+	NVL((SELECT EMP_NAME FROM EMPLOYEE SUB
+	     WHERE SUB.EMP_ID = MAIN.MANAGER_ID), '없음') 관리자명
+FROM EMPLOYEE MAIN;
 
 
 
@@ -444,12 +518,61 @@ WHERE DEPT_CODE IN (SELECT DEPT_ID
 -- 전 직원 중 급여가 높은 상위 5명의
 -- 순위, 이름, 급여 조회
 
+-- 1) 전 직원 조회(급여 높은 순)
+SELECT EMP_NAME, SALARY
+FROM EMPLOYEE
+ORDER BY SALARY DESC;
 
+-- 2) ROWNUM: 조회 결과에 행 번호를 추가하는 가상의 컬럼
+SELECT EMP_NAME, ROWNUM
+FROM EMPLOYEE;
 
+-- 3) ROWNUM을 WHERE절에 사용하기
+SELECT EMP_NAME, ROWNUM
+FROM EMPLOYEE
+WHERE ROWNUM <= 5;
+-- 조건절에 ROWNUM 사용시 주의사항: 조건절에 ROWNUM을 작성하는 경우 반드시 조건 범위 내에 1 (1번 행)이 반드시 포함되어야 함
 
+-- 4) 1, 2, 3번을 토대로 급여 상위 5명 조회 시도
+SELECT EMP_NAME, SALARY, ROWNUM
+FROM EMPLOYEE
+WHERE ROWNUM <= 5
+ORDER BY SALARY DESC;
+-- EMPLOYEE 테이블 위에서부터 5명을 가지고 급여 내림차순 조회한 것
+-- 문제 원인: SELECT 해석 순서상 ORDER BY가 가장 마지막에 해석되기 때문에 급여 상위 5명이라는 의도와 맞지 않음
+-- 해결 방법: 인라인 뷰 이용
+
+-- 해결 1) 급여 내림차순 조회
+SELECT EMP_NAME, SALARY
+FROM EMPLOYEE
+ORDER BY SALARY DESC;
+-- 해결 1의 조회 결과(RESULT SET)를 가상의 테이블인 뷰로 이용할 예정(행 순서, 컬럼 그대로 이용)
+
+-- 해결 2) 해결 1의 조회 결과를 FROM절에 작성하여 상위 5행만 조회
+SELECT ROWNUM, EMP_NAME, SALARY
+FROM (SELECT EMP_NAME, SALARY
+	  FROM EMPLOYEE
+      ORDER BY SALARY DESC) -- 메인쿼리 안에 포함된 뷰 생성 구문(인라인 뷰)
+WHERE ROWNUM <= 5;
 
 -- 급여 평균이 3위 안에 드는 부서의 부서코드와 부서명, 평균급여를 조회
+SELECT *
+FROM (SELECT DEPT_CODE, DEPT_TITLE, FLOOR(AVG(SALARY)) 평균
+	  FROM EMPLOYEE
+	  LEFT JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID)
+	  GROUP BY DEPT_CODE, DEPT_TITLE
+	  ORDER BY 3 DESC)
+WHERE ROWNUM <= 3;
 
+-- 인라인 뷰 사용시 컬럼명에 유의해야 한다.
+-- 급여 평균이 590만 원인 부서를 조회
+SELECT *
+FROM (SELECT DEPT_CODE, DEPT_TITLE, FLOOR(AVG(SALARY)) 평균
+	  FROM EMPLOYEE
+	  LEFT JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID)
+	  GROUP BY DEPT_CODE, DEPT_TITLE
+	  ORDER BY 평균 DESC)
+WHERE 평균 = 5900000; -- 메인쿼리에서 인라인 뷰의 컬럼명을 그대로 사용
 
 ------------------------------------------------------------------------
 
@@ -461,6 +584,17 @@ WHERE DEPT_CODE IN (SELECT DEPT_ID
 -- 
 -- 전 직원의 급여 순위 
 -- 순위, 이름, 급여 조회
+SELECT ROWNUM, EMP_NAME, SALARY
+FROM (SELECT EMP_NAME, SALARY
+	  FROM EMPLOYEE
+	  ORDER BY SALARY DESC);
+
+-- WITH를 이용해서 메인쿼리 깔끔하게 정리
+WITH TOP_SALARY AS (SELECT EMP_NAME, SALARY
+				    FROM EMPLOYEE
+					ORDER BY SALARY DESC)
+SELECT ROWNUM, EMP_NAME, SALARY
+FROM TOP_SALARY;
 
 --------------------------------------------------------------------------
 
@@ -470,10 +604,14 @@ WHERE DEPT_CODE IN (SELECT DEPT_ID
 -- RANK() OVER : 동일한 순위 이후의 등수를 동일한 인원 수 만큼 건너뛰고 순위 계산
 --               EX) 공동 1위가 2명이면 다음 순위는 2위가 아니라 3위
 
+-- 급여를 많이 받는 순서로 조회
+SELECT EMP_NAME, SALARY, RANK() OVER(ORDER BY SALARY DESC) 순위
+FROM EMPLOYEE;
 
 
 -- DENSE_RANK() OVER : 동일한 순위 이후의 등수를 이후의 순위로 계산
 --                     EX) 공동 1위가 2명이어도 다음 순위는 2위
-
+SELECT EMP_NAME, SALARY, DENSE_RANK() OVER(ORDER BY SALARY DESC) 순위
+FROM EMPLOYEE;
 
 
