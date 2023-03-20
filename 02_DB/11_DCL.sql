@@ -157,3 +157,4 @@ WHERE ROLE = 'CONNECT';
 
 -- 앞으로 사용자 계정 권한을 생성할 경우 권한 부여 구문
 GRANT CONNECT, RESOURCE, CREATE VIEW TO 계정명;
+
