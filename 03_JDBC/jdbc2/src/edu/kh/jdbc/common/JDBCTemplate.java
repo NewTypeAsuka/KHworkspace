@@ -12,7 +12,7 @@ public class JDBCTemplate {
 	
 	/* Template : 주형, 양식, 본뜨기 위한 틀
 	 * 
-	 * JDBCTemplate : JDBC 관련 작업을 위한 코드를 제공하는 클래스
+	 * JDBCTemplate: JDBC 관련 작업을 위한 코드를 제공하는 클래스
 	 * - DB 연결을 위한 Connection 생성 구문
 	 * - JDBC 객체 자원 반환 구문(close)
 	 * - commit, rollback 구문
