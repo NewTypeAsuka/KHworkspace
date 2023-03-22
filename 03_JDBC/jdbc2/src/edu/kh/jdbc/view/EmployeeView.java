@@ -112,7 +112,6 @@ public class EmployeeView {
 	
 	/**
 	 * 2. 사번이 일치하는 사원 조회
-	 * @throws SQLException 
 	 */
 	private void selectOne() {
 		System.out.println("\n----- 사번으로 사원 조회(1명) -----\n");

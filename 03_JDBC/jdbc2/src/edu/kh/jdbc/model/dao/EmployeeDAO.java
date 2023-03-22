@@ -67,8 +67,8 @@ public class EmployeeDAO {
 			// catch문 대신 throws 구문으로 예외 처리
 			
 			// 4. JDBC 객체 자원 반환 (단 conn 빼고)
-			close(stmt);
 			close(rs);
+			close(stmt);
 		}
 		// 5. 결과 반환
 		return empList;
