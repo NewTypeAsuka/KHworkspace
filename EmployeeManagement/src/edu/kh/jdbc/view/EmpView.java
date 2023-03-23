@@ -1,9 +1,12 @@
 package edu.kh.jdbc.view;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 import edu.kh.jdbc.model.dto.Emp;
 import edu.kh.jdbc.model.service.EmpService;
@@ -362,7 +365,26 @@ public class EmpView {
 	 */
 	private void selectNewFive() {
 		System.out.println("\n----- 가장 최근 입사한 사원 5명 조회 -----\n");
-
+		
+		try {
+			List<Emp> empList = service.selectNewFive();
+			
+			if(empList.isEmpty()) {
+				System.out.println("\n[조회된 사원이 없습니다.]\n");
+				return;
+			}
+			
+			for(Emp emp : empList) {
+				System.out.printf("%d / %s / %s / %s \n",
+						emp.getEmpId(),
+						emp.getEmpName(),
+						emp.getDepartmentTitle(),
+						emp.getHireDate());
+			}
+		} catch(SQLException e) {
+			System.out.println("\n[가장 최근 입사한 사원 5명 조회 중 예외 발생]\n");
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -371,5 +393,18 @@ public class EmpView {
 	private void selectDept() {
 		System.out.println("\n----- 부서별 통계 조회 -----\n");
 
+		try {
+			List<Map<String, Object>> mapList = service.selectDept();
+			
+			for(Map<String, Object> map : mapList) {
+				System.out.printf("%s / %d / %d \n",
+						map.get("deptTitle"),
+						map.get("count"),
+						map.get("avg"));
+			}
+		} catch (SQLException e) {
+			System.out.println("[부서별 통계 조회 중 예외 발생]");
+			e.printStackTrace();
+		}
 	}
 }

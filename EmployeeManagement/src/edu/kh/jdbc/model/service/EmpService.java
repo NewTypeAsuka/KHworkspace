@@ -5,6 +5,7 @@ import static edu.kh.jdbc.common.JDBCTemplate.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import edu.kh.jdbc.model.dao.EmpDAO;
 import edu.kh.jdbc.model.dto.Emp;
@@ -118,10 +119,36 @@ public class EmpService {
 		
 		Connection conn = getConnection();
 		int result = dao.retireEmployee(conn, input);
-		if(result > 0) commit(conn);
-		else rollback(conn);
 		close(conn);
 		
 		return result;
+	}
+	
+	/**
+	 * 8. 가장 최근 입사한 사원 5명 조회 서비스
+	 * @return empList
+	 * @throws SQLException
+	 */
+	public List<Emp> selectNewFive() throws SQLException {
+		
+		Connection conn = getConnection();
+		List<Emp> empList = dao.selectNewFive(conn);
+		close(conn);
+		
+		return empList;
+	}
+
+	/**
+	 * 9. 부서별 통계 조회 서비스
+	 * @return mapList
+	 * @throws SQLException
+	 */
+	public List<Map<String, Object>> selectDept() throws SQLException {
+		
+		Connection conn = getConnection();
+		List<Map<String, Object>> mapList = dao.selectDept(conn);
+		close(conn);
+		
+		return mapList;
 	}
 }

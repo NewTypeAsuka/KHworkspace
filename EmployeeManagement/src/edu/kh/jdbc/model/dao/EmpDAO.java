@@ -8,9 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import edu.kh.jdbc.model.dto.Emp;
 
@@ -269,5 +270,86 @@ public class EmpDAO {
 			close(stmt);
 		}
 		return result;
+	}
+
+	/**
+	 * 8. 가장 최근 입사한 사원 5명 조회 결과 반환 메서드
+	 * @param conn
+	 * @return empList
+	 * @throws SQLException
+	 */
+	public List<Emp> selectNewFive(Connection conn) throws SQLException {
+
+		List<Emp> empList = new ArrayList<>();
+		
+		try {
+			String sql = "SELECT *\r\n"
+					+ "FROM (SELECT EMP_ID, EMP_NAME, NVL(DEPT_TITLE, '부서없음'), HIRE_DATE\r\n"
+					+ "	  FROM EMPLOYEE\r\n"
+					+ "	  LEFT JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID)\r\n"
+					+ "	  ORDER BY HIRE_DATE DESC)\r\n"
+					+ "WHERE ROWNUM <= 5";
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				String empId = rs.getString(1);
+				String empName = rs.getString(2);
+				String deptTitle = rs.getString(3);
+				Date hireDate = rs.getDate(4);
+				
+				Emp emp = new Emp();
+				emp.setEmpId(Integer.parseInt(empId));
+				emp.setEmpName(empName);
+				emp.setDepartmentTitle(deptTitle);
+				emp.setHireDate(hireDate);
+				
+				empList.add(emp);
+			}
+		} finally {
+			close(rs);
+			close(stmt);
+		}
+		return empList;
+	}
+	
+	/**
+	 * 9. 부서별 통계 조회 결과 반환 메서드
+	 * @param conn
+	 * @return mapList
+	 * @throws SQLException
+	 */
+	public List<Map<String, Object>> selectDept(Connection conn) throws SQLException {
+		
+		List<Map<String, Object>> mapList = new ArrayList<>();
+		
+		try {
+			String sql = "SELECT DEPT_CODE, NVL(DEPT_TITLE, '부서없음') DEPT_TITLE, COUNT(*) 인원, FLOOR(AVG(SALARY)) 평균\r\n"
+					+ "FROM EMPLOYEE\r\n"
+					+ "LEFT JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID)\r\n"
+					+ "GROUP BY DEPT_CODE, DEPT_TITLE\r\n"
+					+ "ORDER BY DEPT_CODE ASC";
+			
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				String deptTitle = rs.getString("DEPT_TITLE");
+				int count = rs.getInt("인원");
+				int avg = rs.getInt("평균");
+				
+				Map<String, Object> map = new LinkedHashMap<>();
+				map.put("deptTitle", deptTitle);
+				map.put("count", count);
+				map.put("avg", avg);
+				
+				mapList.add(map);
+			}
+		} finally {
+			close(rs);
+			close(stmt);
+		}
+		return mapList;
 	}
 }
