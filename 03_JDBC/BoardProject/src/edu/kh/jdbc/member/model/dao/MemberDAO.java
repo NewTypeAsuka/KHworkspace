@@ -33,7 +33,7 @@ public class MemberDAO {
 	}
 
 	/**
-	 * 회원 목록 조회 결과 반환 서비스
+	 * 회원 목록 조회 결과 반환 메서드
 	 * @return memberList
 	 * @throws Exception
 	 */
@@ -60,5 +60,86 @@ public class MemberDAO {
 			close(stmt);
 		}
 		return memberList;
+	}
+
+	/**
+	 * 회원 정보 수정 결과 반환 메서드
+	 * @param conn
+	 * @param memberName
+	 * @param memberGender
+	 * @param memberNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updateMember(Connection conn, String memberName, 
+			String memberGender, int memberNo) throws Exception {
+
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateMember");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberName);
+			pstmt.setString(2, memberGender);
+			pstmt.setInt(3, memberNo);
+			result = pstmt.executeUpdate();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/**
+	 * 비밀번호 변경 결과 반환 메서드
+	 * @param conn
+	 * @param oldPassword
+	 * @param newPassword
+	 * @param memberNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updatePassword(Connection conn, String oldPassword, 
+			String newPassword, int memberNo) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updatePassword");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, newPassword);
+			pstmt.setInt(2, memberNo);
+			pstmt.setString(3, oldPassword);
+			result = pstmt.executeUpdate();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/**
+	 * 회원 탈퇴 결과 반환 메서드
+	 * @param currPassword
+	 * @param memberNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int unregister(Connection conn, String currPassword, int memberNo) throws Exception {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("unregister");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			pstmt.setString(2, currPassword);
+			result = pstmt.executeUpdate();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 }
