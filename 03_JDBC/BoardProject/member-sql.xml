@@ -30,8 +30,8 @@
 	
 	<!-- 회원 탈퇴 -->
 	<entry key="unregister">
-		DELETE
-		FROM "MEMBER"
+		UPDATE "MEMBER"
+		SET UNREGISTER_FL = 'Y'
 		WHERE MEMBER_NO = ?
 		AND MEMBER_PW = ?
 	</entry>
