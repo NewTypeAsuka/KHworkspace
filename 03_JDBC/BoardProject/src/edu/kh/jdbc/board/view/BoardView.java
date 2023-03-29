@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import edu.kh.jdbc.board.model.dto.Board;
+import edu.kh.jdbc.board.model.dto.Comment;
 import edu.kh.jdbc.board.model.service.BoardService;
 import edu.kh.jdbc.common.Session;
 
@@ -114,6 +115,15 @@ public class BoardView {
 			System.out.println("--------------------------------------------------------\n");
 			System.out.println(board.getBoardContent());
 			System.out.println("\n--------------------------------------------------------");
+			
+			// 해당 게시글의 댓글 목록 조회
+			if(!board.getCommentList().isEmpty()) {
+	            for(Comment c : board.getCommentList()) {
+	            	System.out.printf("[댓글번호: %d]  작성자: %s  작성일: %s\n%s\n", 
+	            			c.getCommentNo(), c.getMemberName(), c.getCreateDate(), c.getCommentContent());
+	                System.out.println("--------------------------------------------------------");
+	            }
+	        }
 			
 			// 로그인한 회원이 작성한 게시글일 경우 수정/삭제 기능 노출
 			if(Session.loginMember.getMemberNo() == board.getMemberNo()) {
