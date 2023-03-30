@@ -1,0 +1,106 @@
+<!-- ! + enter: Emmet으로 전체 형식 자동완성 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_목록관련태그</title>
+</head>
+<body>
+    <!-- Emmet: HTML/CSS 코드 자동완성 플러그인(태그(h1) + enter)-->
+
+    <h1>02_목록 관련 태그</h1> <!-- shift + enter: 개행 -->
+
+    <h3>ul(unordered list) 태그: 순서 없는 목록</h3>
+
+    <ul> <!-- 목록의 내용을 작성할 수 있는 판 -->
+        <li> <!-- list item -->
+            김밥
+        </li>
+        <li>서브웨이</li>
+        <li>백반</li>
+        <li>햄버거</li>
+    </ul>
+
+    <hr>
+
+    <!-- emmet 사용법 
+        >: 태그 내부에 작성(하위)       ul>li + enter 
+        +: 형제 레벨로 작성(같은 레벨)  dl>dt+dd*5 + enter
+        * 숫자: 개수                    ul>li*5 + enter
+        {}: 태그 내부 내용              ul>li*5{항목} + enter
+        $: 1부터 1씩 증가하는 숫자 출력 ul>li*5{항목$} + enter -->
+
+    <ul> <!-- ul>li*5{아이템$} + enter -->
+        <li>아이템1</li>
+        <li>아이템2</li>
+        <li>아이템3</li>
+        <li>아이템4</li>
+        <li>아이템5</li>
+    </ul>
+
+    <hr>
+
+    <h3>ol(ordered list) 태그: 순서 있는 목록</h3>
+
+    <pre>
+        type 속성: 순서를 나타내는 형식을 지정
+        - 미작성: 1부터 1씩 증가하는 숫자
+        - type="a": 영어 소문자 순서(abcd..)
+        - type="A": 영어 대문자 순서(ABCD..)
+        - type="i": 로마 소문자 순서(i ii iii..)
+        - type="I": 로마 대문자 순서(I II III..)
+
+        start 속성: 몇부터 시작할지 지정
+        - start="5": 5부터 시작
+
+        reversed 속성: 역순으로 출력
+    </pre>
+
+    <ol type="a" start="5" reversed>
+        <li>카레</li>
+        <li>우육면</li>
+        <li>버거킹</li> 
+        <li>라멘</li>
+        <li>삼각김밥</li>
+    </ol>
+
+    <hr>
+
+    <h3>dl(description list) 태그: 설명 목록</h3>
+
+    <pre>
+        dl 태그: 설명 목록 판
+
+        dt 태그: 이름 
+
+        dd 태그: 이름에 대한 설명
+    </pre>
+
+    <dl>
+        <dt>김밥</dt>
+        <dd>참치김밥</dd>
+        <dd>야채김밥</dd>
+        <dd>치즈김밥</dd>
+        <dd>멸치김밥</dd>
+    </dl>
+
+    <hr>
+
+    <h3>ul 중첩 사용</h3>
+
+    <ul>
+        <li>1번 항목</li>
+        <li>2번 항목</li>
+        <li>
+            3번 항목
+            <ul>
+                <li>3-1 항목</li>
+                <li>3-2 항목</li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>
