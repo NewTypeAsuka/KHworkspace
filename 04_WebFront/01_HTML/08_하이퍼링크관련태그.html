@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08_하이퍼링크관련태그</title>
+</head>
+<body>
+    <h1>하이퍼 링크 관련 태그: a</h1>
+    <!-- anchor: 닻, 고정, 연결 -->
+
+    <pre>
+        a 태그는 현재 웹 문서와 다른 웹 문서를 연결해서
+        페이지 간의 이동을 가능하게 만드는 기능을 제공
+        -> 이때 a 태그로 감싸진 문자열 == 하이퍼링크
+
+        * 하이퍼링크는 웹 문서(HTML)가 다른 문서와 구분되는 핵심적인 기능
+        텍스트 또는 이미지를 클릭해서 페이지 이동이 가능하다.
+    </pre>
+
+    <hr>
+
+    <ul>
+        <li>
+            <!-- href: 참조할 문서의 경로(url) 작성 -->
+            <a href="01_글자관련태그.html">01_글자관련태그</a>
+        </li>
+        <li>
+            <!-- target="_blank": 새 탭에서 열기 -->
+            <a href="02_목록관련태그.html" target="_blank">02_목록관련태그</a>
+        </li>
+        <li>
+            <!-- 외부 주소(url)도 가능 -->
+            <a href="https://www.iei.or.kr/" target="_blank">KH 정보교육원</a>
+        </li>
+        <li>
+            <!-- 이미지 클릭 시 페이지 이동 -->
+            <a href="https://www.iei.or.kr/" target="_blank">
+                <img src="https://www.iei.or.kr/resources/images/main/main_renewal/top_logo.jpg">
+            </a>
+        </li>
+    </ul>
+
+    <hr>
+
+    <h2 id="start">한 페이지 내에서 이동(점프)</h2>
+
+    <!-- #: id를 나타내는 기호 -->
+    <ul>
+        <li><a href="#image1">이미지1</a></li>
+        <li><a href="#image2">이미지2</a></li>
+        <li><a href="#image3">이미지3</a></li>
+    </ul>
+
+    <h3 id ="image1">이미지1</h3>
+    <img src="../images/cats/cat4.jpg">
+    <br><a href="#start">목록으로 이동</a>
+    <h3 id ="image2">이미지2</h3>
+    <img src="../images/dogs/dog3.jpg">
+    <br><a href="#start">목록으로 이동</a>
+    <h3 id ="image3">이미지3</h3>
+    <img src="../images/flowers/flower3.jpg">
+    <br><a href="#start">목록으로 이동</a>
+</body>
+</html>
