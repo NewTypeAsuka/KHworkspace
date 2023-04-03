@@ -1,0 +1,37 @@
+/* only-child */
+#test1>p:only-child{
+    /* #test1의 자식으로 p 태그 혼자만 있을 떄 선택 */
+    background-color: steelblue;
+}
+
+#test2>p:only-of-type{
+    /* #test2 자식 중 p 태그가 1개이면 선택, 다른 태그 신경 X */
+    background-color: deeppink;
+}
+
+/* :empty */
+#test3:empty{
+    height: 30px;
+    background-color: brown;
+}
+
+/* 클래스가 여러 개 작성된 요소만 특정해서 선택하기 */
+/* 붙여쓰기: 2번만 선택하기 */
+.test4.cls4{
+    background-color: orange;
+}
+
+/* 문제 */
+/* #test5 자식 중 4번 선택 */
+#test5 > li:nth-child(4){
+    background-color: green;
+}
+/* #test5 자식 중 4, 5번 선택 */
+#test5 > li:not(.c5){
+    background-color: crimson;
+}
+
+/* #test6 후손 중 10번 선택 */
+#test6 > li:nth-of-type(5) > span{
+    background-color: brown;
+}
