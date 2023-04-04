@@ -1,0 +1,65 @@
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: skyblue;
+    /* 배경색은 content, padding 영역에 적용됨 */
+}
+
+/* content 영역 */
+.content{
+    width: 150px;
+    height: 150px;
+    /* width, height는 기본적으로 content 영역의 크기를 지정하는 속성 */
+}
+/* border 영역 */
+.border{
+    border: 10px solid red;
+}
+/* padding 영역 */
+.padding{
+    padding: 30px;
+    /* content 영역과 border 영역 사이 상하좌우 30px의 여백 부여 */
+}
+/* margin 영역 */
+.margin{
+    margin: 20px;
+    /* 다른 요소와의 간격을 상하좌우 20px만큼 벌림 */
+    /* 서로 다른 요소와 margin 영역이 겹칠 경우
+    두 영역의 margin의 합만큼 벌어지는 것이 아니라
+    둘 중 margin이 큰 쪽으로 벌어진다. */
+    /* 형제 요소 뿐만 아니라 감싸고 있는 부모 요소와도 간격 지정 */
+}
+
+/* padding 방향성 테스트 */
+.padding-test{
+    /* padding: 20px; */
+    /* padding: 20px 50px; */
+    /* padding: 30px 40px 50px; */
+    /* padding: 30px 20px 30px 50px; */
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 50px;
+    padding-right: 20px;
+}
+
+/* border 방향성 테스트 */
+.border-test{
+    border: 4px solid red;
+    /* border는 방향별로 지정시 모양/색상을 같이 작성해야 한다 */
+    border-top: 1px solid black;
+    border-bottom: 5px dashed magenta;
+    border-left: 10px dotted rgba(15, 24, 197, 0.2);
+    border-right: 5px double blue;
+}
+
+/* margin: auto 확인 */
+.container-1{
+    border: 2px solid black;
+    width: 500px;
+    height: 300px;
+}
+/* margin: auto는 다른 요소와의 간격을 계산해서 자동으로 중앙 정렬시킴 */
+/* 단 상하 방향에 auto를 적용하려면 position 관련 속성이 추가로 필요 */
+.margin-auto{
+    margin: 100px auto;
+}
