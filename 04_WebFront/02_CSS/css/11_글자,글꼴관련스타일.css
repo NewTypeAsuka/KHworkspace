@@ -1,0 +1,57 @@
+/* color 속성 */
+#colorList > li{
+    font-size: 24px;
+    font-weight: bold;
+}
+#colorList > li:nth-child(1){color: red;}
+#colorList > li:nth-child(2){color: rgb(50, 100, 150);}
+#colorList > li:nth-child(3){color: rgba(255, 0, 0, 0.5);}
+#colorList > li:nth-child(4){color: #ff0000;}
+#colorList > li:nth-child(5){color: #f00}
+#colorList > li:nth-child(6){color: hsl(360, 100%, 50%)}
+#colorList > li:nth-child(7){color: hsla(360, 100%, 50%, 0.3)}
+
+/* 줄 속성 */
+#decorationList > li{
+    font-size: 24px;
+    font-weight: bold;
+}
+#decorationList > li:nth-child(1){text-decoration: overline;}
+#decorationList > li:nth-child(2){text-decoration: line-through;}
+#decorationList > li:nth-child(3){text-decoration: underline;}
+#decorationList > li:nth-child(4) > a{text-decoration: none;}
+
+/* 글자 정렬 */
+#alignTest > p:nth-child(1){text-align: left;}
+#alignTest > p:nth-child(2){text-align: right;}
+#alignTest > p:nth-child(3){text-align: center;}
+#alignTest > p:nth-child(4){text-align: justify;}
+
+/* 장평 */
+#lineHeight{line-height: 30px;}
+
+/* 자간 */
+#letterSpacing{letter-spacing: -2px;}
+
+/* 폰트 */
+#fontFamily > li:nth-child(1){font-family: '궁서';}
+#fontFamily > li:nth-child(2){font-family: '궁서체';}
+#fontFamily > li:nth-child(3){font-family: '상준체', '민지체', '바탕체';}
+#fontFamily > li:nth-child(4){font-family: 'Gowun Dodum', sans-serif;}
+
+@font-face {
+    font-family: 'EF_jejudoldam';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+#fontFamily > li:nth-child(5){font-family: 'EF_jejudoldam';}
+
+/* 다운받은 폰트 적용 */
+@font-face{
+    font-family: 'Gugi';
+    src: url('../css/Gugi-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+#fontFamily > li:nth-child(6){font-family: 'Gugi';}

@@ -1,0 +1,113 @@
+img{
+    width: 250px;
+    height: auto;
+    /* 이미지는 고유한 크기와 가로/세로 비율이 존재함
+        -> width 지정 후 height 미지정 또는 auto로 설정하면
+        기존 이미지 비율에 맞게 height가 자동 조정    
+    */
+}
+
+/* 
+    css 속성은 모든 브라우저에서 등일하게 처리하지 않고
+    각자의 방법으로 처리하거나 호환되지 않는 경우가 있다.
+
+    이를 대비하기 위해 각 회사별 브라우저 호환을 위한 작성방식이 존재한다.
+    -ms- : 익스플로러, 엣지
+    -webkit- : 크롬, 사파리
+    -o- : 오페라
+    -moz- : 파이어폭스
+*/
+
+/* 2차원 변형 */
+
+/* 좌우 이동 */
+.trans-x-2d:hover{
+    -ms-transform: translateX(100px);
+    -webkit-transform: translateX(100px);
+    -o-transform: translateX(100px);
+    -moz-transform: translateX(100px);
+    transform: translateX(100px);
+}
+/* 상하 이동 */
+.trans-y-2d:hover{
+    transform: translateY(100px);
+}
+/* 대각선 이동 */
+.trans-d-2d:hover{
+    transform: translate(100px, 100px);
+}
+/* 가로 방향 확대/축소 */
+.trans-x-scale-2d:hover{
+    transform: scaleX(0.5);
+                /* 배율 1 == 100% */
+}
+/* 세로 방향 확대/축소 */
+.trans-y-scale-2d:hover{
+    transform: scaleY(0.5);
+                /* 배율 1 == 100% */
+}
+/* 가로, 세로 방향 확대/축소 */
+.trans-scale-2d:hover{
+    transform: scale(0.5, 0.5);
+                /* 배율 1 == 100% */
+}
+/* 요소 회전 */
+.trans-rotate:hover{
+    transform: rotate(-30deg);
+                /* 각도 deg, 시계방향 + */
+}
+
+/* 3차원 변형 */
+
+/* x, y, z축 이동 */
+.trans-3d:hover{
+        /* perspective(값): z축 방향의 전체 길이 지정 */
+    transform: perspective(300px) translate3d(50px, 50px, 100px);
+                    /* z축은 perspective를 사용하면 원근법이 적용됨 */
+}
+/* x축 회전 */
+.trans-rotate-x-3d:hover{
+    transform: perspective(300px) rotateX(45deg);
+}
+/* y축 회전 */
+.trans-rotate-y-3d:hover{
+    transform: perspective(300px) rotateY(-45deg);
+}
+/* z축 회전 */
+.trans-rotate-z-3d:hover{
+    transform: perspective(300px) rotateZ(-45deg);
+}
+/* x, y, z축 회전 */
+.trans-rotate-3d:hover{
+                                /* rotate3d(x, y, z, 회전각도) */
+    transform: perspective(300px) rotate3d(1, 0.1, 0.3, 45deg);
+                                /* deg가 아니라 0~1 사이 숫자 작성 */
+}
+
+/* 트랜지션 */
+.box{
+    width: 150px;
+    height: 150px;
+    border: 1px solid #000;
+    background-color: violet;
+    transition-duration: 3s;
+    transition-timing-function: cubic-bezier(0.3, 0.3, 1, 0.5);
+    transition-delay: 0.5s;
+}
+.test1:hover{ 
+    background-color: yellow;
+}
+.test2:hover{
+    /* 마우스를 올리면 배경은 skyblue, 시계방향으로 2바퀴 회전, 테두리 곡률 50%*/
+    background-color: skyblue;
+    transform: rotate(+720deg);
+    border-radius: 50%;
+}
+.test3:hover{
+    background-color: skyblue;
+    transform: rotate(+1080deg);
+}
+.test4:hover{
+    background-color: skyblue;
+    transform: translateX(150px) rotate(180deg);
+}

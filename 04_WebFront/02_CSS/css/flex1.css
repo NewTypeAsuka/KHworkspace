@@ -1,0 +1,43 @@
+.flex-container{
+    height: 700px;
+    background-color: #ccc;
+
+    /* flex로 지정 */
+    display: flex;
+
+    /* flex-direction: 중심축의 방향, 시작/끝 지정 */
+    flex-direction: row;
+    /* flex-direction: row-reverse;
+    flex-direction: column;
+    flex-direction: column-reverse; */
+
+    /* justify-content: 중심축 방향을 기준으로 item 정렬  */
+    justify-content: flex-start;
+    /* justify-content: flex-end; */
+    /* flex-direction: row-reverse; */
+    justify-content: center;
+    /* flex-direction: column; */
+    justify-content: space-around;
+    justify-content: space-evenly;
+    justify-content: space-between;
+
+    /* align-items: 교차축 방향을 기준으로 item 정렬 */
+    align-items: flex-start;
+    align-items: flex-end;
+    align-items: center;
+    align-items: baseline;
+}
+/* baseline 확인 */
+.item2{padding: 5px;}
+.item3{padding: 10px;}
+.item4{padding: 15px;}
+.item5{padding: 20px;}
+
+/* 정가운데 배치하기 */
+.test{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
