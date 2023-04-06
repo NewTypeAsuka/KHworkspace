@@ -1,0 +1,26 @@
+.grid-container{
+    background-color: #ccc;
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 50px 100px 150px;
+
+    /* repeat(횟수, 크기) 함수 */
+    grid-template-columns: repeat(3, 25%);
+
+    /* fr 단위 */
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+
+    /* minmax(최소, 최대) 함수 */
+    grid-template-rows: repeat(2, 100px), minmax(100px, auto);
+    grid-template-columns: 100px minmax(200px, 300px) 100px;
+    /* 평소에는 300px, 화면이 줄어들면 200px까지 줄어들 수 있음 */
+
+    /* auto-fit / auto-fill */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+    /* grip-gap */
+    /* grid-gap: 10px; */
+    grid-row-gap: 20px;
+    grid-column-gap: 10px;
+}
