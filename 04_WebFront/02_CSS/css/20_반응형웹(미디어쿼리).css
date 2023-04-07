@@ -1,0 +1,97 @@
+/* 반응형 웹: 브라우저나 장치 환경에 따라 모습이 변하는 웹페이지 */
+
+/* @media(미디어 쿼리): 사용 환경, 크기에 따라 CSS를 지정 가능하게 해주는 구문 */
+
+/* 
+    min-width: 최소 너비
+    min-height: 최소 높이
+        -> 내부 요소 또는 화면의 크기가 지정된 너비보다 넓으면/높으면 자동으로 증가
+    max-width: 최대 너비
+    max-height: 최대 높이
+        -> 내부 요소 또는 화면의 크기가 지정된 너비보다 좁으면/낮으면 자동으로 축소
+*/
+
+/* @media 미디어유형 and 속성 */
+/* 미디어유형: 지정할 미디어의 종류(all, screen, print) */
+/* 
+    1024px ~: 16:9 비율 모니터, 노트북
+    768 ~ 1024px: 태블릿 가로모드, 4:3 비율 모니터
+    480 ~ 768px: 태블릿 세로모드, 모바일 가로모드
+    ~ 769px: 모바일 
+*/
+
+/* nav 버튼(햄버거 버튼) */
+.nav-btn{
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border: none;
+    font-size: 1.5em;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    user-select: none; /* 드래그 불가 */
+    cursor: pointer;
+    display: none !important;
+}
+
+@media screen and (max-width: 1024px){
+    /* 모니터 화면이 최대 너비 1024px보다 작을 때 적용
+        == 화면 너비가 최대 1024px 되기 전까지 적용 */
+    /* body{background-color: pink;} */
+    main{
+        width: 100%;
+        margin-top: 10px;
+        min-width: 768px;
+    }
+    header{
+        height: 150px;
+        flex-direction: column;
+    }
+    header > section{
+        width: initial !important; /* 초기값 */
+    }
+    /* 로고 너비 변경 */
+    #homeLogo{
+        width: 80px;
+    }
+    /* 검색창 너비 변경 */
+    .search-area{
+        width: 90%;
+    }
+    /* 내용 패딩 */
+    .content{
+        padding: 10px;
+    }
+
+    /* nav 관련 */
+    .nav-btn{
+        display: block !important;
+    }
+    nav{
+        width: 100vw; /* 화면 너비만큼 nav 확장 */
+        height: 100vh; /* 화면 높이만큼 nav 확장 */
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.3);
+        display: none;
+    }
+    nav > ul{
+        background-color: white;
+        width: 300px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 60px;
+        padding-left: 20px;
+    }
+    nav li{
+        flex-basis: auto; /* 중심축 방향 크기 자동 조정 */
+    }
+    nav a:hover{
+        background-color: initial;
+        color: #455ba8;
+        font-size: 1.5em;
+    }
+}
+@media screen and (max-width: 768px){
+    /* body{background-color: skyblue;} */
+}
