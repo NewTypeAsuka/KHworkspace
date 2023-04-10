@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/04_변수와자료형.js"></script>
+    <script>
+        console.log("html에서 num1 출력: " + num1);
+        console.log("html에서 num2 출력: " + num2);
+    </script>
+    <style>
+        #typeBox{
+            border: 2px solid black;
+            width: 500px;
+            height: 400px;
+        }
+    </style>
+    <title>04_변수와자료형</title>
+</head>
+<body>
+    <h1>변수 선언 위치에 따른 구분</h1>
+    <h4>Java</h4>
+    <pre>
+        // Java는 기본적으로 {}(중괄호, 블록 레벨 scope, 블록에 따라 변수 범위 지정)
+
+        public class Student{
+            // 필드
+            private String name; // 인스턴스 변수 -> 클래스 내부 어디든 사용 가능
+            public static final PI = 3.14; // 클래스 변수 -> 다른 클래스 어디서든 호출 가능
+            // 메서드
+            public void setName(String name){ // 매개변수(메서드 지역 변수) -> 메서드 안에서만 사용 가능
+                this.name = name;
+                int num = 10; // 메서드 지역 변수 -> 메서드 안에서만 사용 가능
+            }
+        }
+    </pre>
+
+    <hr>
+    <h4 style="color:red">JavaScript</h4>
+    <pre>
+        // var: 함수 레벨 스코프(function level scope) -> 함수 내부 선언 후 내부 어디서든 사용 가능
+        // 변수 키워드 없음: 전역 변수
+
+        (JS 파일 내부라고 생각)
+        var num1; // 전역 변수 -> 선언된 후 어디서든 사용 가능
+        num2; // 전역 변수 -> JS는 변수 키워드가 없다면 무조건 전역 변수
+        
+        function test(arg){ // 매개 변수(함수 지역 변수) -> 함수 안에서만 사용 가능
+            var num3; // 함수 지역 변수 -> 함수 안에서만 사용 가능
+            num4; // 전역 변수
+
+            if(조건식){
+                var num5; // 함수 지역 변수 -> if문 종료 후에도 num5 사용 가능
+                num6; // 전역 변수
+            }
+        }
+        // 함수 밖에서 내부 num3, num5 사용 불가
+    </pre>
+
+    <hr>
+
+    <h1>변수 선언 방식</h1>
+    <pre>
+        var:    function level scope 
+                변수(저장하는 값이 변할 수 있음)
+                같은 scope에서 변수명 중복 가능
+
+        let:    block level scope {}
+                변수(저장하는 값이 변할 수 있음)
+                같은 scope에서 변수명 중복 불가
+                -> 흔히 알고 있는 Java 변수
+
+        const:  block level scope {}
+                상수(항상 같은 값)
+                같은 scope에서 변수명 중복 불가
+                -> 흔히 알고 있는 Java 상수(final)
+
+        1순위 사용: const -> JS는 특정 요소를 선택하는 경우가 많아 상수를 자주 이용
+        2순위 사용: let
+        3순위 사용: var
+    </pre>
+    
+    <hr>
+
+    <h1>JavaScript의 자료형</h1>
+    <pre>
+        JS는 변수를 선언할 때 별도의 자료형을 지정하지 않음
+        -> 변수에 대입되는 리터럴에 의해서 자료형이 결정됨
+
+        - undefined: 정의되지 않음 -> 변수를 선언하고 아무런 값을 대입하지 않았을 때
+
+        - string: 문자열("", '')
+        - number: 숫자(정수, 실수)
+        - boolean: true/false
+    </pre>
+
+    <button onclick="typeTest()">자료형 확인</button>
+    <div id="typeBox"></div>
+</body>
+</html>
