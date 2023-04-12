@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-1_간이계산기_만들기</title>
+</head>
+<body>
+    두 수를 입력받아 버튼에 작성된 연산을 수행하는 계산기 만들기
+    <!-- 
+        if, for, while, switch, break, continue 사용 가능
+    -->
+    <hr>
+
+    첫번째 값: <input type="text" id="num1"><br>
+    두번째 값: <input type="text" id="num2"><br>
+    <button class="calc" id="plus" onclick="plus()">+</button>
+    <button class="calc" id="minus" onclick="minus()">-</button>
+    <button class="calc" id="multiple" onclick="multiple()">*</button>
+    <button class="calc" id="divide" onclick="divide()">/</button>
+    <button class="calc" id="remain" onclick="remain()">%</button>
+    
+    <br><br>
+    계산 결과: <span id="span"><!-- 여기에 결과 출력 --></span>
+
+    <script>
+        // 작성된 HTML 요소에 원하는 속성(id, class, onclick)을 작성하고
+        // 필요한 JS 코드(function)
+        let num1 = document.getElementById("num1");
+        let num2 = document.getElementById("num2");
+        const result = document.getElementById("span");
+        function plus(){
+            result.innerText = Number(num1.value) + Number(num2.value);
+        }
+        function minus(){
+            result.innerText = Number(num1.value) - Number(num2.value);
+        }
+        function mutiple(){
+            result.innerText = Number(num1.value) * Number(num2.value);
+        }
+        function divide(){
+            result.innerText = Number(num1.value) / Number(num2.value);
+        }
+        function remain(){
+            result.innerText = Number(num1.value) % Number(num2.value);
+        }
+    </script>
+</body>
+</html>
