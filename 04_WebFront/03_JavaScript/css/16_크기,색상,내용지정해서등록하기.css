@@ -1,0 +1,11 @@
+.container {
+    width: 400px;
+}
+
+#content{
+    width: 100%;
+    height: 100px;
+}
+
+#size{width: 30px;}
+#color{width: 100px;}
