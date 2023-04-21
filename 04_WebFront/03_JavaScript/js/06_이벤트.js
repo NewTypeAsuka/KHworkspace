@@ -61,7 +61,7 @@ const opList = document.getElementsByClassName("op");
 for(let op of opList){
     op.addEventListener('click', function(e){
         result.innerText
-        = new Function("return " + Number(num1.value) 
+        = new Function("return " + Number(num1.value)
                                 + e.target.innerText
                                 + Number(num2.value))();
     });

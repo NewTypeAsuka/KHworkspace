@@ -77,7 +77,6 @@ function typeTest(){
     // string
     const name = "홍길동";
     box.innerHTML += "<br>name: " + name + " / " + typeof name;
-
     const gender = 'M';
     box.innerHTML += "<br>gender: " + gender + " / " + typeof gender;
     const phone = '01012341234';
