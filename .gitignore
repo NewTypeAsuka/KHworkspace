@@ -13,7 +13,6 @@ bin/
 
 # Servers 폴더
 Servers
-*.war
 
 # Spring 관련 폴더, 파일
 target
