@@ -21,3 +21,5 @@ target
 pom.properties
 MANIFEST.MF
 *.log
+.factorypath
+settings.json
