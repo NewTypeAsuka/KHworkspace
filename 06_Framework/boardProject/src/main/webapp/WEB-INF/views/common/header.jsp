@@ -7,7 +7,7 @@
         <header>
             <section>
                 <!-- 클릭 시 메인 페이지로 이동하는 로고 -->
-                <a href="#">
+                <a href="/">
                     <img src="/resources/images/logo.jpg" alt="KH로고" id="homeLogo">
                 </a>
             </section>
@@ -38,6 +38,26 @@
                 </article>
             </section>
             <section></section>
+
+            <!-- 우측 상단 드롭다운 메뉴 -->
+            <div class="header-top-menu">
+                <c:choose>
+                    <c:when test="${empty loginMember}">
+                        <a href="/">메인 페이지</a> | <a href="/member/login">로그인</a> <%-- 로그인 X --%>
+                    </c:when>
+                
+                    <c:otherwise> <%-- 로그인 O --%>
+                        <label for="headerMenuToggle">
+                            ${loginMember.memberNickname} <i class="fa-solid fa-caret-down"></i>
+                        </label>
+                        <input type="checkbox" id="headerMenuToggle">
+                        <div class="header-menu">
+                            <a href="#">내정보</a>
+                            <a href="/member/logout">로그아웃</a>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
+            </div>
         </header>
         
         <nav>

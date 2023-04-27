@@ -83,3 +83,9 @@ FROM "MEMBER"
 WHERE MEMBER_DEL_FL = 'N'
 	AND MEMBER_EMAIL = 'user01@kh.or.kr'
 	AND MEMBER_PW = 'pass01!';
+	
+-- user01의 비밀번호 변경
+UPDATE "MEMBER" SET
+MEMBER_PW = '$2a$10$IWy3alGBjpJL3qZMhUOQt.EdET6F/cZ4GvcGbjHANT9lUIUdCR4lu';
+
+COMMIT;
