@@ -74,5 +74,21 @@
 		WHERE MEMBER_DEL_FL = 'N'
 		AND MEMBER_EMAIL = #{memberEmail}
 	</select>
+	
+	<!--
+		insert, update, delete 같은 DML 구문은
+		수행결과가 항상 성공한 행의 개수(int 자료형)로 고정
+		-> resultType을 작성하지 않음(항상 int)
+				-> 결과적으로 select만 resultType 작성
+	-->
+	
+	
+	<!-- 회원가입 -->		<!-- mybatis-config.xml에 지정된 별칭 -->
+	<insert id="signUp" parameterType="Member">
+		INSERT INTO "MEMBER"
+		VALUES (SEQ_MEMBER_NO.NEXTVAL, #{memberEmail}, #{memberPw}
+				, '${memberNickname}', #{memberTel}, #{memberAddress}
+				, NULL, DEFAULT, DEFAULT, DEFAULT)
+	</insert>
 
 </mapper>

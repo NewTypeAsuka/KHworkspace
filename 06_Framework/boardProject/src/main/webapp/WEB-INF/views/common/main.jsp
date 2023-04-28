@@ -69,7 +69,7 @@
                                 <input type="checkbox" name="saveId" ${save}>아이디 저장
                             </label>
                             <article class="signup-find-area">
-                                <a href="#">회원가입</a>
+                                <a href="/member/signUp">회원가입</a>
                                 <span>|</span>
                                 <a href="#">ID/PW 찾기</a>
                             </article>
@@ -79,13 +79,13 @@
                     <%-- 로그인 되었을 때 --%>
                     <c:otherwise>
                         <article class="login-area">
-                            <a href="#">
+                            <a href="/myPage/profile">
                                 <img src="/resources/images/user.png" id="memberProfile">
                             </a>
 
                             <div class="my-info">
                                 <div>
-                                    <a href="#" id="nickname">${sessionScope.loginMember.memberNickname}</a>
+                                    <a href="/myPage/info" id="nickname">${sessionScope.loginMember.memberNickname}</a>
                                     <a href="/member/logout" id="logoutBtn">로그아웃</a>
                                 </div>
                                 <p>${loginMember.memberEmail}</p>
