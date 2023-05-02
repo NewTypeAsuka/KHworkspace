@@ -1,4 +1,4 @@
-package edu.kh.project.main.controller;
+package edu.kh.project.member.controller;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
