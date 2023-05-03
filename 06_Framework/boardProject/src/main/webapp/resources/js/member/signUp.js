@@ -401,7 +401,6 @@ checkAuthKeyBtn.addEventListener("click", function(){
         })
         .catch(err => console.log(err));
 
-
     } else{
         alert("인증 시간이 만료되었습니다. 다시 시도해주세요.")
     }
