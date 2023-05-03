@@ -20,7 +20,7 @@ public class AjaxController {
 	private AjaxService service;
 
 	// 이메일로 닉네임 조회
-	@GetMapping(value="/selectNickname", produces = "application/text; charset=UTF-8")
+	@GetMapping(value="/selectNickname", produces="application/text; charset=UTF-8")
 	@ResponseBody
 	public String selectNickname(String email) {
 							// 쿼리스트링에 담긴 파라미터
