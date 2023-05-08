@@ -62,10 +62,17 @@
         
         <nav>
             <ul>
-                <li><a href="#">공지사항</a></li>
+                <%-- <li><a href="#">공지사항</a></li>
                 <li><a href="#">자유게시판</a></li>
                 <li><a href="#">질문게시판</a></li>
                 <li><a href="#">FAQ</a></li>
-                <li><a href="#">1:1문의</a></li>
+                <li><a href="#">1:1문의</a></li> --%>
+
+                <%-- 인터셉터를 이용해서 조회된 boardTypeList를 applicationScope에서 얻어와 화면에 출력 --%>
+                <c:forEach var="boardType" items="${boardTypeList}">
+                    <li>
+                        <a href="/board/${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
+                    </li>
+                </c:forEach>
             </ul>
         </nav>
