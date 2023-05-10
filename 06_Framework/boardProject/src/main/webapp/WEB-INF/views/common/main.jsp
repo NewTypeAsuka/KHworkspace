@@ -119,8 +119,14 @@
                     <c:otherwise>
                         <article class="login-area">
                             <a href="/myPage/profile">
-                                <img src="/resources/images/user.png" id="memberProfile">
+                                <c:if test="${empty loginMember.profileImage}"> <%-- 프로필 이미지가 없으면 기본 이미지 --%>
+                                    <img src="/resources/images/user.png" id="memberProfile">
+                                </c:if>
+                                <c:if test="${!empty loginMember.profileImage}"> <%-- 프로필 이미지가 있으면 있는 이미지 --%>
+                                    <img src="${loginMember.profileImage}" id="memberProfile">
+                                </c:if>
                             </a>
+                            
 
                             <div class="my-info">
                                 <div>
