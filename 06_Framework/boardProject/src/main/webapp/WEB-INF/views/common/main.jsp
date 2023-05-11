@@ -126,7 +126,6 @@
                                     <img src="${loginMember.profileImage}" id="memberProfile">
                                 </c:if>
                             </a>
-                            
 
                             <div class="my-info">
                                 <div>
