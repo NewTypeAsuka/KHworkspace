@@ -618,3 +618,30 @@ FROM (
 ROLLBACK;
 
 SELECT * FROM "BOARD" ORDER BY BOARD_NO DESC;
+
+-- 게시글 수정
+UPDATE "BOARD"
+SET BOARD_TITLE = #{boardTitle},
+	BOARD_CONTENT = #{boardContent},
+	B_UPDATE_DATE = SYSDATE
+WHERE BOARD_CODE = #{boardCode}
+AND BOARD_NO = #{boardNo};
+
+SELECT *
+FROM BOARD
+WHERE BOARD_DEL_FL = 'Y';
+
+-- 게시글 삭제(사실은 수정)
+UPDATE "BOARD"
+SET BOARD_DEL_FL = 'Y'
+WHERE BOARD_CODE = #{boardCode}
+AND BOARD_NO = #{boardNo};
+
+
+
+
+
+
+
+
+
