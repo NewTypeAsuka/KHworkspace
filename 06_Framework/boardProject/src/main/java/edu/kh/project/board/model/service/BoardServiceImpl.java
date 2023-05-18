@@ -117,5 +117,11 @@ public class BoardServiceImpl implements BoardService {
 		return dao.headerSearch(query);
 	}
 
+	// db 이미지 리스트 조회
+	@Override
+	public List<String> selectImageList() {
+		return dao.selectImageList();
+	}
+
 	
 }
