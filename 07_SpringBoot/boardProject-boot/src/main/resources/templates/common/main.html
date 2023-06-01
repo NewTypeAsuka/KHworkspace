@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpringBoot Test</title>
+</head>
+<body>
+    <h1>메인페이지입니다.</h1>
+    <h1 th:text="${message}">여기에 message가 출력될 겁니다.</h1> <!-- 사실상 덮어씌우기 때문에 설명을 적는 것 -->
+    <input type="text" th:value="${message}">
+    <script th:inline="javascript"> // JS에서 thymeleaf를 사용하기 위한 설정
+        const message = /*[[${message}]]*/ "전달 받은 message"; // 사실상 덮어씌우기 때문에 설명을 적는 것
+        alert(message);
+    </script>
+</body>
+</html>
