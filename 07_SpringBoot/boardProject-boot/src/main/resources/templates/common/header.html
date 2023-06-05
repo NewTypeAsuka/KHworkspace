@@ -1,0 +1,87 @@
+<!-- <link rel="stylesheet" href="/css/main-style.css"> -->
+<link rel="stylesheet" th:href="@{/css/main-style.css}"> <!-- 타임리프 형식으로 쓰기 권장 / @:경로 관련 -->
+<script th:src="@{https://kit.fontawesome.com/f7459b8054.js}" crossorigin="anonymous"></script> <!-- fontawesome 추가 -->
+<script th:src="@{/js/header.js}"></script>
+<header>
+    <section>
+        <!-- 클릭 시 메인 페이지로 이동하는 로고 -->
+        <a th:href="@{/}">
+            <img th:src="@{/images/logo.jpg}" alt="KH로고" id="homeLogo">
+        </a>
+    </section>
+    <section>
+        <!-- 검색어 입력할 수 있는 요소 배치 -->
+        <article class="search-area">
+            <!--
+                action: 내부 input에 작성된 값을 제출할 경로/주소(DB)
+                method: 어떤 방식으로 제출할 것인지 지정
+                    - get: input 태그 값을 주소에 담아서 제출(주소에 보임)
+                    - post: input 태그 값을 주소에 담지 않고 제출(주소에 안 보임)
+            -->
+            <form th:action="@{/board/1}" method="get">
+                <fieldset> <!-- form 태그 내 영역 구분 -->
+                    <!-- 
+                        input의 name 속성 == 제출 시 key 값
+                        input에 입력된 내용 == 제출 시 value 값
+                        autocomplete "off": 브라우저 제공 자동완성 기능 off
+                    -->
+                    <input type="search" name="query" id="query"
+                    placeholder="검색어를 입력해주세요."
+                    autocomplete="off" value="${param.query}">
+
+                    <input type="hidden" name="key" value="t">
+
+                    <!-- 검색 버튼 -->
+                    <button id="searchBtn" class="fa-solid fa-magnifying-glass"></button>
+                </fieldset>
+            </form>
+
+            <ul id="searchResult" class="close"></ul>
+        </article>
+    </section>
+    <section></section>
+
+    <!-- <span th:text="${session.loginMember} != null">로그인 회원 정보</span> -->
+
+    <!-- 우측 상단 드롭다운 메뉴 -->
+    <div class="header-top-menu">
+
+        <th:block th:if="${session.loginMember == null}"> <!-- 로그인 X -->
+            <a th:href="@{/}">메인 페이지</a> | <a th:href="@{/member/login}">로그인</a>
+        </th:block>
+        <th:block th:unless="${session.loginMember == null}"> <!-- 로그인 O -->
+            <label for="headerMenuToggle">
+                <!-- <th:block th:text="${session.loginMember.memberNickname}">로그인 회원의 닉네임</th:block> --> <!-- 타임리프 정석 표기법 -->
+                [[${session.loginMember.memberNickname}]] <!-- 타임리프에서 EL 사용하는 법 -->
+                
+                <i class="fa-solid fa-caret-down"></i>
+            </label>
+        </th:block>
+            
+        <input type="checkbox" id="headerMenuToggle">
+        <div class="header-menu">
+            <a th:href="@{/myPage/info}">내정보</a>
+            <a th:href="@{/member/logout}">로그아웃</a>
+        </div>
+
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <!-- <li><a href="#">공지사항</a></li>
+        <li><a href="#">자유게시판</a></li>
+        <li><a href="#">질문게시판</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">1:1문의</a></li> -->
+
+        <!-- 인터셉터를 이용해서 조회된 boardTypeList를 applicationScope에서 얻어와 화면에 출력 -->
+        <li>
+            <a href="/board/${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
+        </li>
+
+        <!-- 로그인했을 때 채팅 보여짐 -->
+        <li><a href="/chatting">채팅</a></li>
+
+    </ul>
+</nav>

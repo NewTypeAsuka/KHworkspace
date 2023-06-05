@@ -1,0 +1,25 @@
+<footer>
+    <p>Copyright &copy; KH Information Educational Institute A-Class</p>
+    <article>
+        <a href="#">프로젝트 소개</a>
+        <span>|</span>
+        <a href="#">이용약관</a>
+        <span>|</span>
+        <a href="#">개인정보처리방침</a>
+        <span>|</span>
+        <a href="#">고객센터</a>
+    </article>
+</footer>
+
+<th:block th:text="${name}">설명(사라짐)</th:block>
+
+<!-- javascript 영역에서 타임리프를 적용/해석함 -->
+<script th:inline="javascript">
+    /* Natural Template */
+    const message = /*[[${message}]]*/ "전달받은 message";
+    // 타임리프 해석        값              설명(사라짐)
+    //                (자료형 알아서 해석)
+
+    if(message != null) alert(message);
+
+</script>

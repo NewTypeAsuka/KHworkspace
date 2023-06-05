@@ -43,7 +43,6 @@
             <ul id="searchResult" class="close"></ul>
         </article>
     </section>
-    <section></section>
 
     <!-- 우측 상단 드롭다운 메뉴 -->
     <div class="header-top-menu">
