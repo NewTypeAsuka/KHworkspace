@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.board.model.dto.Board;
+import edu.kh.project.board.model.dto.BoardImage;
 import edu.kh.project.board.model.service.BoardService;
 import edu.kh.project.member.model.dto.Member;
 import jakarta.servlet.http.Cookie;
@@ -214,19 +215,24 @@ public class BoardController {
 				}
 			}
 			
-			
-			
-			
-			
-			
-			
-			
-			
 			//----------------------------------------------------------------------------
 			
 			path = "board/boardDetail"; // forward할 jsp 경로
-			
 			model.addAttribute("board", board);
+			
+			// 게시글에 이미지가 있을 경우
+			if(!board.getImageList().isEmpty()) {
+				
+				BoardImage thumbnail = null;
+				
+				// 0번 인덱스 이미지의 순서가 0인 경우 == 썸네일
+				if(board.getImageList().get(0).getImageOrder() == 0) {
+					thumbnail = board.getImageList().get(0);
+				}
+				model.addAttribute("thumbnail", thumbnail);
+				model.addAttribute("start", thumbnail != null ? 1 : 0); // 썸네일 있으면 start=1 /  없으면 start=0
+			}
+			
 		} else { // 조회 결과가 없을 경우
 			path = "redirect:/board/" + boardCode; // 게시판 첫 페이지로 리다이렉트
 			ra.addFlashAttribute("message", "해당 게시글이 존재하지 않습니다.");
