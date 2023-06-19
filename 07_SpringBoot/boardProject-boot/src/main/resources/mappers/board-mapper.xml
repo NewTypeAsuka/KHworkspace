@@ -136,7 +136,7 @@
 	</select>
 	
 	
-	<!-- 특정 게시글 댓글 조회(계층형 쿼리) -->
+	<!-- 특정 게시글 댓글 조회(계층형 쿼리) --> <!-- comment-mapper로 복사 -->
 	<select id="selectCommentList" resultMap="comment_rm">
 		SELECT LEVEL, C.* FROM
 			(SELECT COMMENT_NO, COMMENT_CONTENT,
