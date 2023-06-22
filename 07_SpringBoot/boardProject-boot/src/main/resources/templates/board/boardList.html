@@ -49,7 +49,7 @@
                         <th:block th:unless="${#lists.size(boardList) == 0}">
                             <tr th:each="board : ${boardList}"> <!-- 게시글 목록 조회 결과가 있지 않다면 -->
                                 <td th:text="${board.boardNo}">게시글 번호</td>
-                                <td> 
+                                <td>
                                     <!-- 썸네일이 있을 경우 -->
                                     <img th:if="${board.thumbnail}" class="list-thumbnail" th:src="${board.thumbnail}">
 

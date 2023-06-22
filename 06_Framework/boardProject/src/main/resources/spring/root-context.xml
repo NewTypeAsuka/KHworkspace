@@ -27,7 +27,7 @@
 		<property name="url"
 			value="jdbc:oracle:thin:@115.90.212.22:9000:XE" /> -->
 		<property name="username" value="project" />
-		<property name="password" value="project1234" />
+		<property name="password" value="project123" />
 		<!-- defaultAutoCommit: SQL 수행 후 자동 COMMIT 설정. (기본값 : true) -->
 		<property name="defaultAutoCommit" value="false" />
 		<!-- 커넥션 풀 설정 -->
