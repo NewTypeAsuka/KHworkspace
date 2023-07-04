@@ -12,7 +12,6 @@ const Id = ({handler}) => {
                 <input type="text" id="id" onChange={handler}/>
             </div>
         </>
-    
     );
 };
 
@@ -28,7 +27,6 @@ const Pw = ({handler}) => {
                 <input type="password" id="pw" onChange={handler}/>
             </div>
         </>
-    
     );
 };
 

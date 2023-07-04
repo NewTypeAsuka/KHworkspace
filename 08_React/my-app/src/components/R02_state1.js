@@ -24,7 +24,6 @@ const InputTest = () => {
         
             // onChange={ (e) => {setInputValue(e.target.value)} }/>
             onChange={changeInputValue}/>
-
     );
 };
 
