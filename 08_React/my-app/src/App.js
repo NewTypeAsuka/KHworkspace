@@ -8,6 +8,7 @@ import State2 from './components/R03_state2';
 import State3 from './components/R04_state3';
 
 import TodoList1 from './components/R05_todoList1';
+import ContextApi from './components/R06_context_api';
 
 
 function App() {
@@ -34,7 +35,9 @@ function App() {
       <hr/>
       {/* <State3/> */}
       <hr/>
-      <TodoList1/>
+      {/* <TodoList1/> */}
+      <hr/>
+      <ContextApi/>
 
     </>
     
