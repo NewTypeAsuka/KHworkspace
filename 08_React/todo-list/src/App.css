@@ -72,3 +72,8 @@ input {
 input:focus {
     animation: inputAnimation 0.2s linear;
 }
+
+.id-error {
+    color: red;
+    font-weight: bold;
+}
