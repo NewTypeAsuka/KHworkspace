@@ -8,7 +8,7 @@ const LoginComponent = () => {
     const [id, setId] = useState('');
     const [pw, setPw] = useState('');
 
-
+    // 로그인
     const login = () => {
         fetch('/login', {
             method : 'post',

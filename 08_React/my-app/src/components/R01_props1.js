@@ -14,13 +14,12 @@ function test() { // 함수로 적는 전통적인 작성법
 const ChildComponent = (props) => {
 
     return (
+
         <>
-        
             <ul>
                 <li>이름: {props.name}</li>
                 <li>나이: {props.age}</li>
             </ul>
-
         </>
     );
 }
@@ -41,12 +40,11 @@ const PropsEx = (props) => { // 함수를 변수에 대입하는 요즘 트렌�
     const menu = {'김밥':3000, '떡볶이':4000};
 
     return (
-        <>
 
+        <>
             <h1>{props.name}</h1>
             <ChildComponent name={props.name} age={props.name === '홍길동' ? 20 : 25}/> {/* PropsEx 밖에 export하지 못하기 떄문에 PropsEx에 담아서 export */}
             <MenuPrint {...menu}/>
-
         </>
     );
 }

@@ -1,0 +1,51 @@
+#root { text-align: center; }
+
+.numberContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 10px;
+}
+
+button {
+  border-radius: 5px;
+}
+.minusBtn {
+  background-color: cyan;
+}
+.plusBtn {
+  background-color: magenta;
+}
+
+/* ------------------------------------------------------- */
+
+#root { text-align: center; }
+
+.inputContainer {
+  height: 150px;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  place-items: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+.topBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.bottomBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  width: 80%;
+}
+.result {
+  margin-left: 10%;
+  margin-right: 10%;
+}
